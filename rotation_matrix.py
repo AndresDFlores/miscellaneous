@@ -2,8 +2,8 @@ import numpy as np
 
 
 def rotate_point_2d(point:tuple, angle):
-    #  point should be two numeric values, (x, y)
-    #  angle should be a numeric value in degrees
+    #  point is a tuple with two numeric values, (x, y)
+    #  angle is a numeric value in degrees over which the point is rotating
 
 
     #  create coordinate matrix
