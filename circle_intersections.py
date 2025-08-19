@@ -1,8 +1,8 @@
 import numpy as np
 
 
-def get_intersections(circ_1:tuple, circ_2:tuple):
-    #  input tuple: (radius, center_x, center_y)
+def get_intersections_alg(circ_1:tuple, circ_2:tuple):
+    #  each circ_n tuple should define a circle: (radius, center_x, center_y)
 
     r1, a1, b1 = circ_1
     r2, a2, b2 = circ_2
@@ -23,7 +23,9 @@ def get_intersections(circ_1:tuple, circ_2:tuple):
     return (x1, y1), (x2, y2)
 
 
+
 def get_intersections_linalg(circ_1:tuple, circ_2:tuple, circ_3:tuple):
+    #  each circ_n tuple should define a circle: (radius, center_x, center_y)
 
     r1, x1, y1 = circ_1
     r2, x2, y2 = circ_2
@@ -37,8 +39,7 @@ def get_intersections_linalg(circ_1:tuple, circ_2:tuple, circ_3:tuple):
     E = 2*(y3-y2)
     F = r2**2-r3**2-x2**2+x3**2-y2**2+y3**2
 
-    intersection = np.linalg.inv([[A, B], [D, E]])@[[C], [F]]
-    return (*intersection[0], *intersection[-1])
+    return np.linalg.inv([[A, B], [D, E]])@[[C], [F]]
 
 
 
@@ -93,7 +94,7 @@ if __name__=="__main__":
 
     #  two-circle intersection algebraic
 
-    intersection_1, intersection_2 = get_intersections(
+    intersection_1, intersection_2 = get_intersections_alg(
         circ_1=(r1,a1,b1), 
         circ_2=(r2,a2,b2)
     )
